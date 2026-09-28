@@ -1,0 +1,33 @@
+public static void insertionSort(int[] vetor) {
+
+    // Começamos em 1 porque o elemento da posição 0
+    // sozinho já pode ser considerado ordenado
+    for (int i = 1; i < vetor.length; i++) {
+
+        // Guarda o número que queremos encaixar
+        int atual = vetor[i];
+
+        // j começa uma posição antes de i
+        int j = i - 1;
+
+        // Enquanto:
+        //
+        // 1) ainda existem posições à esquerda
+        // 2) o número da esquerda é maior que "atual"
+        //
+        // vamos deslocando os números para a direita
+        while (j >= 0 && vetor[j] > atual) {
+
+            // Empurra o elemento uma posição
+            // para a direita
+            vetor[j + 1] = vetor[j];
+
+            // Anda uma posição para trás
+            j--;
+        }
+
+        // Quando o while termina,
+        // encontramos onde "atual" deve entrar
+        vetor[j + 1] = atual;
+    }
+}
