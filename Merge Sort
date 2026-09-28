@@ -1,0 +1,103 @@
+public static void mergeSort(int[] vetor, int inicio, int fim) {
+
+    // Só continuamos dividindo se existir
+    // mais de um elemento nessa parte do vetor
+    if (inicio < fim) {
+
+        // Descobre a posição do meio
+        int meio = (inicio + fim) / 2;
+
+        // Ordena recursivamente a metade esquerda
+        mergeSort(vetor, inicio, meio);
+
+        // Ordena recursivamente a metade direita
+        mergeSort(vetor, meio + 1, fim);
+
+        // Depois que as duas partes foram divididas
+        // e ordenadas, juntamos as duas
+        merge(vetor, inicio, meio, fim);
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+public static void merge(int[] vetor, int inicio, int meio, int fim) {
+
+    // Cria um vetor temporário para guardar
+    // os elementos enquanto fazemos a junção
+    int[] aux = new int[fim - inicio + 1];
+
+    // i percorre a metade esquerda
+    int i = inicio;
+
+    // j percorre a metade direita
+    int j = meio + 1;
+
+    // k controla a posição dentro do vetor auxiliar
+    int k = 0;
+
+
+    // Enquanto ainda existem elementos
+    // tanto na esquerda quanto na direita
+    while (i <= meio && j <= fim) {
+
+        // Compara o elemento da esquerda
+        // com o elemento da direita
+        if (vetor[i] <= vetor[j]) {
+
+            // O da esquerda é menor.
+            // Coloca ele no vetor auxiliar.
+            aux[k] = vetor[i];
+
+            // Anda na esquerda
+            i++;
+
+        } else {
+
+            // O da direita é menor.
+            // Coloca ele no vetor auxiliar.
+            aux[k] = vetor[j];
+
+            // Anda na direita
+            j++;
+        }
+
+        // Anda uma posição no vetor auxiliar
+        k++;
+    }
+
+
+    // Se sobraram elementos na metade esquerda,
+    // copiamos todos eles
+    while (i <= meio) {
+        aux[k] = vetor[i];
+
+        i++;
+        k++;
+    }
+
+
+    // Se sobraram elementos na metade direita,
+    // copiamos todos eles
+    while (j <= fim) {
+        aux[k] = vetor[j];
+
+        j++;
+        k++;
+    }
+
+
+    // Finalmente, copiamos o vetor auxiliar
+    // de volta para o vetor original
+    for (int x = 0; x < aux.length; x++) {
+        vetor[inicio + x] = aux[x];
+    }
+}
