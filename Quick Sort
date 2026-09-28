@@ -1,0 +1,85 @@
+public static void quickSort(int[] vetor, int inicio, int fim) {
+
+    // Só fazemos alguma coisa se existir
+    // mais de um elemento nessa parte
+    if (inicio < fim) {
+
+        // Particiona o vetor e recebe
+        // a posição definitiva do pivô
+        int posicaoPivo = particionar(vetor, inicio, fim);
+
+
+        // Ordena tudo que ficou
+        // à ESQUERDA do pivô
+        quickSort(vetor, inicio, posicaoPivo - 1);
+
+
+        // Ordena tudo que ficou
+        // à DIREITA do pivô
+        quickSort(vetor, posicaoPivo + 1, fim);
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+public static int particionar(int[] vetor, int inicio, int fim) {
+
+    // Nesta implementação escolhemos
+    // o último elemento como pivô
+    int pivo = vetor[fim];
+
+
+    // i marca até onde estão os elementos
+    // menores ou iguais ao pivô.
+    //
+    // Começa antes da primeira posição.
+    int i = inicio - 1;
+
+
+    // j percorre os elementos procurando
+    // quem é menor ou igual ao pivô
+    for (int j = inicio; j < fim; j++) {
+
+
+        // Se encontramos um número
+        // menor ou igual ao pivô...
+        if (vetor[j] <= pivo) {
+
+            // Aumentamos a região dos menores
+            i++;
+
+
+            // Colocamos esse número
+            // na região dos menores
+            int temp = vetor[i];
+
+            vetor[i] = vetor[j];
+
+            vetor[j] = temp;
+        }
+    }
+
+
+    // Depois de percorrer tudo,
+    // colocamos o pivô logo depois
+    // da região dos menores.
+
+    int temp = vetor[i + 1];
+
+    vetor[i + 1] = vetor[fim];
+
+    vetor[fim] = temp;
+
+
+    // Retorna a posição onde o pivô ficou
+    return i + 1;
+}
