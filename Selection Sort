@@ -1,0 +1,33 @@
+public static void selectionSort(int[] vetor) {
+
+    // i representa a posição que queremos preencher
+    // com o menor número disponível
+    for (int i = 0; i < vetor.length - 1; i++) {
+
+        // Por enquanto, consideramos que o número
+        // da posição i é o menor
+        int menor = i;
+
+        // j percorre tudo que ainda NÃO foi ordenado
+        // Começa em i + 1 porque a posição i
+        // já está sendo considerada como o menor
+        for (int j = i + 1; j < vetor.length; j++) {
+
+            // Compara o número atual com o menor
+            // encontrado até agora
+            if (vetor[j] < vetor[menor]) {
+
+                // Encontramos um número menor.
+                // Guardamos a POSIÇÃO dele.
+                menor = j;
+            }
+        }
+
+        // Depois de procurar em todo o restante do vetor,
+        // trocamos o menor encontrado com vetor[i]
+
+        int temp = vetor[i];       // Guarda o valor atual
+        vetor[i] = vetor[menor];   // Coloca o menor em i
+        vetor[menor] = temp;       // Coloca o antigo valor no outro lugar
+    }
+}
