@@ -4,8 +4,8 @@ public static void heapSort(int[] vetor) {
     int n = vetor.length;
 
 
-    // PRIMEIRA PARTE:
-    // Transforma o vetor em um Max-Heap.
+    
+    // primeiro transforma o vetor em um Max-Heap.
     //
     // Começamos no último elemento que possui filhos
     // e vamos voltando até a raiz.
@@ -15,8 +15,8 @@ public static void heapSort(int[] vetor) {
     }
 
 
-    // SEGUNDA PARTE:
-    // Agora o maior elemento está na posição 0.
+
+    // depois agora o maior elemento está na posição 0.
     //
     // Vamos colocar os maiores no final
     // um de cada vez.
