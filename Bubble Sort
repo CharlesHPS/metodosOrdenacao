@@ -1,0 +1,28 @@
+public static void bubbleSort(int[] vetor) {
+
+    // Cada repetição desse for é uma "passada"
+    // completa pelo vetor
+    for (int i = 0; i < vetor.length - 1; i++) {
+
+        // j percorre o vetor comparando vizinhos
+        //
+        // O "- i" existe porque, a cada passada,
+        // os maiores elementos já ficaram no final.
+        for (int j = 0; j < vetor.length - 1 - i; j++) {
+
+            // Compara o elemento atual com o próximo
+            if (vetor[j] > vetor[j + 1]) {
+
+                // Se o da esquerda for maior,
+                // eles estão na ordem errada.
+                // Então fazemos a troca.
+
+                int temp = vetor[j];
+
+                vetor[j] = vetor[j + 1];
+
+                vetor[j + 1] = temp;
+            }
+        }
+    }
+}
