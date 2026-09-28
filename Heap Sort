@@ -1,0 +1,105 @@
+public static void heapSort(int[] vetor) {
+
+    // Quantidade de elementos
+    int n = vetor.length;
+
+
+    // PRIMEIRA PARTE:
+    // Transforma o vetor em um Max-Heap.
+    //
+    // Começamos no último elemento que possui filhos
+    // e vamos voltando até a raiz.
+    for (int i = n / 2 - 1; i >= 0; i--) {
+
+        heapify(vetor, n, i);
+    }
+
+
+    // SEGUNDA PARTE:
+    // Agora o maior elemento está na posição 0.
+    //
+    // Vamos colocar os maiores no final
+    // um de cada vez.
+    for (int i = n - 1; i > 0; i--) {
+
+        // Troca a raiz (maior elemento)
+        // com a última posição disponível
+
+        int temp = vetor[0];
+
+        vetor[0] = vetor[i];
+
+        vetor[i] = temp;
+
+
+        // Como fizemos uma troca,
+        // precisamos reorganizar o Heap novamente.
+        //
+        // Usamos "i" como tamanho porque a parte
+        // final já está ordenada.
+        heapify(vetor, i, 0);
+    }
+}
+
+
+
+
+
+
+
+
+
+
+public static void heapify(int[] vetor, int n, int i) {
+
+    // Inicialmente consideramos que o pai
+    // é o maior
+    int maior = i;
+
+
+    // Calcula a posição do filho esquerdo
+    int esquerda = 2 * i + 1;
+
+
+    // Calcula a posição do filho direito
+    int direita = 2 * i + 2;
+
+
+    // Verifica:
+    //
+    // O filho esquerdo existe?
+    // E ele é maior que o atual maior?
+    if (esquerda < n && vetor[esquerda] > vetor[maior]) {
+
+        // Agora consideramos o esquerdo como maior
+        maior = esquerda;
+    }
+
+
+    // Faz a mesma coisa com o filho direito
+    if (direita < n && vetor[direita] > vetor[maior]) {
+
+        maior = direita;
+    }
+
+
+    // Se "maior" mudou,
+    // significa que algum filho era maior que o pai
+    if (maior != i) {
+
+        // Troca pai com o maior filho
+
+        int temp = vetor[i];
+
+        vetor[i] = vetor[maior];
+
+        vetor[maior] = temp;
+
+
+        // A troca pode ter bagunçado a parte de baixo
+        // da árvore.
+        //
+        // Então fazemos heapify novamente.
+        heapify(vetor, n, maior);
+    }
+}
